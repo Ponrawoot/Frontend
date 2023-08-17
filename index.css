@@ -1,82 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@500;600&display=swap");
 
-
-/* Add your custom styles here */
 body {
-    background-image: url('bg_1.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed; 
-    font-family: 'Noto Sans Thai Looped', sans-serif;
-    margin: 50px;
-    padding: 0;
+  background-image: url("bg_1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Noto Sans Thai Looped", sans-serif;
+  margin: 50px;
+  padding: 0;
 }
 
 h1 {
-    text-align: center;
-    margin-top: 10px;
-    color: white;
-    font-size: 200px;
+  text-align: center;
+  margin-top: 10px;
+  color: white;
+  font-size: 200px;
 }
 
 h2 {
-    text-align: center;
-    color: orange;
-    font-size: 80px;
-
+  text-align: center;
+  color: orange;
+  font-size: 80px;
 }
 
 h3 {
-    text-align: center;
-    color: orange;
-    font-size: 50px;
+  text-align: center;
+  color: orange;
+  font-size: 50px;
 }
 
 h4 {
-    color: orangered;
-    font-size: 30px;
+  color: orangered;
+  font-size: 30px;
 }
 
 p {
-
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .details-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .detail {
-    width: 500px;
-    border-radius: 25px;
-    background-color: white;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+  width: 500px;
+  border-radius: 25px;
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .detail:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Style the button-like link */
 a.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #649EDB;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    border-radius: 15px;
-    color: white;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #649edb;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  border-radius: 15px;
+  color: white;
 }
 
-/* Change button background color on hover */
 a.button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
