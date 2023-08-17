@@ -1,0 +1,36 @@
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>ลงทะเบียน</title>
+            <link rel="stylesheet" href="register.css">
+            <script src="register.js"></script>
+        </head>
+        <body>
+            <h1>ลงทะเบียน</h1>
+            <form action="/submit" method="post" onsubmit="return validateForm()">
+                <label for="companyName">ชื่อบริษัท:</label>
+                <input type="text" id="companyName" name="companyName" required><br><br>
+        
+                <label for="numChairs">จำนวนเก้าอี้:</label>
+                <input type="text" id="numChairs" name="numChairs" required><br><br>
+        
+                <label for="contactName">ชื่อผู้ติดต่อ:</label>
+                <input type="text" id="contactName" name="contactName" required><br><br>
+                
+                <label for="contactNumber">เบอร์ผู้ติดต่อ:</label>
+                <input type="text" id="contactNumber" name="contactNumber" required><br><br>
+                
+                <label for="boothSize">ขนาดบูธ:</label>
+                <select id="boothSize" name="boothSize">
+                    <option value="10x10">10x10 ฟุต</option>
+                    <option value="10x15">10x15 ฟุต</option>
+                </select><br><br>
+                
+                <label for="tableSetup">ต้องการโต๊ะตั้งในบูธ:</label>
+                <input type="checkbox" id="tableSetup" name="tableSetup"><br><br>
+                
+                <input type="submit" value="Submit">
+            </form>
+        </body>
+        </html>
