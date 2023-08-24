@@ -1,4 +1,4 @@
-﻿# Simple-Webpage
+﻿# Frontend-Assignment
 
 This is part for Software Development Practice II 2110507
 
