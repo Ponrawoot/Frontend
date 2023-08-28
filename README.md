@@ -1,4 +1,4 @@
-﻿# Frontend-Assignment
+﻿# Frontend-Assignments
 
 This is part for Software Development Practice II 2110507
 
