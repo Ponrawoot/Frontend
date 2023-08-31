@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function ProductCard({ carName, imgSrc} : {carName:string,imgSrc:string}) {
   return (
     <div className='w-1/5 h-[300px] rounded-lg shadow-lg'>
-      <div className={'w-full h-[70%] relative rounded-t-lg'}>
+      <div className='w-full h-[70%] relative rounded-t-lg'>
         <Image
           src={imgSrc}
           alt="Product Picture"
