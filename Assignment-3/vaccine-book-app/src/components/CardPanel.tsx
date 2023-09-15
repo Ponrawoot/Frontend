@@ -3,9 +3,6 @@ import { useReducer, useState } from "react";
 import HospitalCard from "./HospitalCard";
 
 export default function CardPanel() {
-  const [hospitalRatings, setHospitalRatings] = useState<{
-    [hospitalName: string]: number | null;
-  }>({});
 
   const reviewReducer = (
     reviewMap: Map<string, number | null>,
