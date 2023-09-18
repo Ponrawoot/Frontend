@@ -28,15 +28,19 @@ export default function HospitalCard({
         />
       </div>
       <div className="w-full h-[15%] p-[10px] text-black">{name}</div>
-      <Rating
-        name="simple-controlled"
-        value={rating}
-        onChange={(e, newValue) => {
-          e.stopPropagation();
-          setValue(newValue);
-          onReview(name, newValue);
-        }}
-      />
+      <div
+        className="w-full h-1/6 flex items-center justify-center"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Rating
+          name="simple-controlled"
+          value={rating}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+            onReview(name, newValue);
+          }}
+        />
+      </div>
     </InteractiveCard>
   );
 }

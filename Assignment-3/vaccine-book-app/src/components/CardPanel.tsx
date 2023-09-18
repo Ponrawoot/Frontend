@@ -1,9 +1,9 @@
 "use client";
 import { useReducer, useState } from "react";
 import HospitalCard from "./HospitalCard";
+import Link from "next/link";
 
 export default function CardPanel() {
-
   const reviewReducer = (
     reviewMap: Map<string, number | null>,
     action: { type: string; hospitalName: string; rating: number | null }
@@ -32,6 +32,19 @@ export default function CardPanel() {
   initialM.set("Thammasat University Hospital", 0);
   const [allReviews, dispatchCompare] = useReducer(reviewReducer, initialM);
 
+  /**
+   *  Mock Data for Demonstration Only
+   */
+  const mockHospitalRepo = [
+    { hid: "001", name: "Chulalongkorn Hospital", image: "/img/chula.jpg" },
+    { hid: "002", name: "Rajavithi Hospital", image: "/img/rajavithi.jpg" },
+    {
+      hid: "003",
+      name: "Thammasat University Hospital",
+      image: "/img/thammasat.jpg",
+    },
+  ];
+
   return (
     <div>
       <div
@@ -44,30 +57,22 @@ export default function CardPanel() {
           flexWrap: "wrap",
         }}
       >
-        <HospitalCard
-          name="Chulalongkorn Hospital"
-          imgSrc="/img/chula.jpg"
-          onReview={(name: string, rating: number) =>
-            dispatchCompare({ type: "add", hospitalName: name, rating: rating })
-          }
-          rating={allReviews.get("Chulalongkorn Hospital") ?? 0}
-        />
-        <HospitalCard
-          name="Rajavithi Hospital"
-          imgSrc="/img/rajavithi.jpg"
-          onReview={(name: string, rating: number) =>
-            dispatchCompare({ type: "add", hospitalName: name, rating: rating })
-          }
-          rating={allReviews.get("Rajavithi Hospital") ?? 0}
-        />
-        <HospitalCard
-          name="Thammasat University Hospital"
-          imgSrc="/img/thammasat.jpg"
-          onReview={(name: string, rating: number) =>
-            dispatchCompare({ type: "add", hospitalName: name, rating: rating })
-          }
-          rating={allReviews.get("Thammasat University Hospital") ?? 0}
-        />
+        {mockHospitalRepo.map((hospitalItem) => (
+          <Link href={`/hospital/${hospitalItem.hid}`} className="w-1/5">
+          <HospitalCard
+            name={hospitalItem.name}
+            imgSrc={hospitalItem.image}
+            rating={allReviews.get(hospitalItem.name) ?? 0}
+            onReview={(name: string, rating: number) =>
+              dispatchCompare({
+                type: "add",
+                hospitalName: name,
+                rating: rating,
+              })
+            }
+          />
+          </Link>
+        ))}
       </div>
       <div className="px-10">
         <div className="w-full text-xl font-medium text-black">Review</div>
