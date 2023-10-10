@@ -1,9 +1,20 @@
-import CardPanel from "@/components/CardPanel"
-export default function Car() {
-    return (
-        <main className="text-center p-5">
-            <h1 className="text-xl font-medium text-black">Hospital List</h1>
-            <CardPanel/>
-        </main>
-    )
+import HospitalCatalog from "@/components/HospitalCatalog";
+import getHospitals from "@/libs/getHospitals";
+import { LinearProgress } from "@mui/material";
+import { Suspense } from "react";
+export default function Hospital() {
+  const hospitals = getHospitals();
+  return (
+    <main className="text-center p-5">
+      <Suspense
+        fallback={
+          <p>
+            Loading... <LinearProgress />{" "}
+          </p>
+        }
+      >
+        <HospitalCatalog hospitalJson={hospitals} />
+      </Suspense>
+    </main>
+  );
 }

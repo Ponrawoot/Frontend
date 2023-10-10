@@ -12,7 +12,7 @@ export default function HospitalCard({
 }: {
   name: string;
   imgSrc: string;
-  onReview: Function;
+  onReview?: Function;
   rating: number | null;
 }) {
   const [value, setValue] = useState<number | null>(0);
@@ -32,14 +32,18 @@ export default function HospitalCard({
         className="w-full h-1/6 flex items-center justify-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <Rating
-          name="simple-controlled"
-          value={rating}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-            onReview(name, newValue);
-          }}
-        />
+        {onReview ? (
+          <Rating
+            name="simple-controlled"
+            value={rating}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+              onReview(name, newValue);
+            }}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </InteractiveCard>
   );

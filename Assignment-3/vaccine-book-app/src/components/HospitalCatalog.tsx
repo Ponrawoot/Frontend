@@ -1,52 +1,45 @@
 "use client";
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import HospitalCard from "./HospitalCard";
 import Link from "next/link";
-
-export default function CardPanel() {
+export default async function HospitalCatalog({
+  hospitalJson,
+}: {
+  hospitalJson: Object;
+}) {
   const reviewReducer = (
-    reviewMap: Map<string, number | null>,
+    state: Map<string, number | null>,
     action: { type: string; hospitalName: string; rating: number | null }
   ) => {
     if (action.rating == null) {
       action.rating = 0;
     }
     switch (action.type) {
-      case "add": {
-        const newReviewMap = new Map(reviewMap);
-        newReviewMap.set(action.hospitalName, action.rating);
-        return newReviewMap;
-      }
-      case "remove": {
-        const newReviewMap = new Map(reviewMap);
-        newReviewMap.delete(action.hospitalName);
-        return newReviewMap;
-      }
+      case "add":
+        const newStateAdd = new Map(state);
+        newStateAdd.set(action.hospitalName, action.rating);
+        return newStateAdd;
+      case "remove":
+        const newStateRemove = new Map(state);
+        newStateRemove.delete(action.hospitalName);
+        return newStateRemove;
       default:
-        return reviewMap;
+        return state;
     }
   };
   let initialM = new Map<string, number | null>();
-  initialM.set("Chulalongkorn Hospital", 0);
-  initialM.set("Rajavithi Hospital", 0);
-  initialM.set("Thammasat University Hospital", 0);
   const [allReviews, dispatchReview] = useReducer(reviewReducer, initialM);
 
-  /**
-   *  Mock Data for Demonstration Only
-   */
-  const mockHospitalRepo = [
-    { hid: "001", name: "Chulalongkorn Hospital", image: "/img/chula.jpg" },
-    { hid: "002", name: "Rajavithi Hospital", image: "/img/rajavithi.jpg" },
-    {
-      hid: "003",
-      name: "Thammasat University Hospital",
-      image: "/img/thammasat.jpg",
-    },
-  ];
-
+  const hospitalJsonReady = await hospitalJson;
   return (
     <div>
+      <div className="flex justify-center">
+        <div className="w-auto h-auto bg-slate-100 shadow-md rounded-lg p-4 m-5 content-center">
+          <h1 className="text-center font-bold text-3xl mt-3">
+            Total Hospital: {hospitalJsonReady.count}
+          </h1>
+        </div>
+      </div>
       <div
         style={{
           margin: "20px",
@@ -57,24 +50,17 @@ export default function CardPanel() {
           flexWrap: "wrap",
         }}
       >
-        {mockHospitalRepo.map((hospitalItem) => (
-          <Link href={`/hospital/${hospitalItem.hid}`} className="w-1/5">
+        {hospitalJsonReady.data.map((hospitalItem: Object) => (
+          <Link href={`/hospital/${hospitalItem.id}`} className="w-1/5">
             <HospitalCard
               name={hospitalItem.name}
-              imgSrc={hospitalItem.image}
+              imgSrc={hospitalItem.picture}
               rating={allReviews.get(hospitalItem.name) ?? 0}
-              onReview={(name: string, rating: number) =>
-                dispatchReview({
-                  type: "add",
-                  hospitalName: name,
-                  rating: rating,
-                })
-              }
             />
           </Link>
         ))}
       </div>
-      <div className="px-10">
+      <div className="flex justify-center">
         <div className="w-full text-xl font-medium text-black">Review</div>
         {Array.from(allReviews.entries()).map(([name, rating]) => (
           <div
