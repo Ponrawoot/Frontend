@@ -8,17 +8,17 @@ export function VlogPlayer({vdoSrc, isPlaying} : {vdoSrc:string, isPlaying:boole
     useEffect(()=>{
         // alert('width is ' + vdoRef.current?.videoWidth)
         if (isPlaying) {
-            alert('Play VDO')
+            // alert('Play VDO')
             vdoRef.current?.play()
         }
         else {
-            alert('Pause VDO')
+            // alert('Pause VDO')
             vdoRef.current?.pause()
         }
     }, [isPlaying])
 
-    useWindowListener('resize',
-    (e)=>alert('window width is' + (e.target as Window).innerWidth))
+    // useWindowListener('resize',
+    // (e)=>alert('window width is' + (e.target as Window).innerWidth))
 
     return (
         <video className="w-[40%]" src={vdoSrc} ref={vdoRef} controls loop muted/>
