@@ -2,8 +2,12 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 export default function Banner() {
+
+  const { data: session } = useSession()
+  
   const covers = [
     "/img/cover1.jpg",
     "/img/cover2.jpg",
@@ -33,6 +37,10 @@ export default function Banner() {
           Together, we can beat this pandemic.
         </h3>
       </div>
+      {
+        session? <div className="z-30 absolute top-5 right-10 font-semibold text-blue-800 text-xl bg-white rounded-sm">Hello {session.user?.name}</div>
+        : null
+      }
       <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} className="absolute bottom-0 right-0 h-16 w-auto">
                 <button className="bg-blue-400 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded z-20"
                 onClick={(e) => {e.stopPropagation(); router.push('/hospital')}}>
