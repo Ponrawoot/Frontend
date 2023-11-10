@@ -1,3 +1,5 @@
+import _ from "node_modules/cypress/types/lodash"
+
 export interface ReservationItem {
     carId: string
     carModel: string
@@ -6,4 +8,15 @@ export interface ReservationItem {
     pickupLocation: string
     returnDate: string
     returnLocation: string
+}
+
+export interface CarItem {
+    id: string
+    model: string
+    picture: string
+}
+
+export interface CarJson {
+    count: number
+    data: CarItem[]
 }
