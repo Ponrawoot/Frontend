@@ -18,7 +18,9 @@ export default async function MenuBar() {
         height={0}
         sizes="100vh"
       />
+      
       <MenuBarItem title="Booking" pageRef="/booking" />
+      <MenuBarItem title="Hospitals" pageRef="/hospital"/>
 
       <div className="flex flex-row absolute left-0 h-full">
         {session ? (
